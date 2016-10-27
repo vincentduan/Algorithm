@@ -14,7 +14,7 @@ def classify0(inX,dataSet, labels, k):
     dataSetSize = dataSet.shape[0]
 	#tile将原来的一个数组，扩充成了4个一样的数组。diffMat得到了目标与训练数值之间的差值。
     diffMat=tile(inX,(dataSetSize,1))-dataSet
-    print "diffMat",diffMat
+    #print "diffMat",diffMat
     sqDiffMat=diffMat**2
 	#对应列相加，即得到了每一个距离的平方
     sqDistances=sqDiffMat.sum(axis=1)
@@ -34,7 +34,7 @@ def file2matrix(filename):
 	fr=open(filename)
 	#get the number of lines in the file
 	numberOfLines=len(fr.readlines())
-	print "numberOfLines:",numberOfLines
+	#print "numberOfLines:",numberOfLines
 	#prepare matrix to return 
 	returnMat=zeros((numberOfLines,3))
 	#print "returnMat:",returnMat
@@ -49,3 +49,28 @@ def file2matrix(filename):
 		classLabelVector.append(int(listFromLine[-1]))
 		index+=1
 	return returnMat,classLabelVector	
+#归一化特征值
+def autoNorm(dataSet):
+	minVals=dataSet.min(0)
+	maxVals=dataSet.max(0)
+	ranges=maxVals-minVals
+	normDataSet=zeros(shape(dataSet))
+	m=dataSet.shape[0]
+	normDataSet=dataSet-tile(minVals,(m,1))
+	normDataSet=normDataSet/tile(ranges,(m,1))
+	return normDataSet,ranges,minVals
+#测试
+def datingClassTest():
+	hoRatio=0.10
+	datingDataMat,datingLabels=file2matrix('datingTestSet2.txt')
+	normMat,ranges,minVals=autoNorm(datingDataMat)
+	m=normMat.shape[0]
+	numTestVecs=int(m*hoRatio)
+	errorCount=0.0
+	for i in range(numTestVecs):
+		classifierResult=classify0(normMat[i,:],normMat[numTestVecs:m,:],datingLabels[numTestVecs:m],3)
+		print "the classifier came back with:%d,the real answer is:%d" %(classifierResult,datingLabels[i])
+		if(classifierResult != datingLabels[i]):
+			errorCount += 1.0
+	print "the total error rate is:%f" %(errorCount/float(numTestVecs)) 
+
