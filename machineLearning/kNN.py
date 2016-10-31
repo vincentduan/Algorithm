@@ -74,6 +74,7 @@ def datingClassTest():
 			errorCount += 1.0
 	print "the total error rate is:%f" %(errorCount/float(numTestVecs)) 
 
+#约会网站预测函数
 def classifyPerson():
 	resultList=['not at all','in small doses','ip large doses']
 	percentTats=float(raw_input("percentage of time spent playing video games?"))
