@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/algorithm-common/algorithm-common.iml" filepath="$PROJECT_DIR$/algorithm-common/algorithm-common.iml" />
       <module fileurl="file://$PROJECT_DIR$/algorithm-list/algorithm-list.iml" filepath="$PROJECT_DIR$/algorithm-list/algorithm-list.iml" />
-      <module fileurl="file://$PROJECT_DIR$/algorithmparent.iml" filepath="$PROJECT_DIR$/algorithmparent.iml" />
+      <module fileurl="file://$PROJECT_DIR$/algorithm-parent.iml" filepath="$PROJECT_DIR$/algorithm-parent.iml" />
     </modules>
   </component>
 </project>

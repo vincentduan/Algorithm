@@ -6,14 +6,14 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="algorithm-common" />
         <module name="algorithm-list" />
+        <module name="algorithm-common" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="algorithm-common" target="1.8" />
       <module name="algorithm-list" target="1.8" />
-      <module name="algorithmparent" target="1.5" />
+      <module name="algorithm-parent" target="1.5" />
     </bytecodeTargetLevel>
   </component>
 </project>
