@@ -1,4 +1,4 @@
-/target/
-/.settings/*
-/.idea/*
-Algorithm.iml
+**/target/
+**/.idea/
+*.iml
+**.log
